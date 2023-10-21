@@ -1,3 +1,4 @@
+# pantalla no tiene que manejar los comandos, tiene que ir en el entorno o eventos
 class Pantalla:
     def __init__(self):
         self.__listaComandos = [

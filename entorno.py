@@ -1,6 +1,6 @@
 from pantalla import pantalla
 from entidades import Jugador, Enemigo
-from eventos import Pelea
+from eventos import *
 
 class Entorno:
     def __init__(self):

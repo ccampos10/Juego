@@ -2,17 +2,44 @@ from entidades import Enemigo, Jugador
 from pantalla import pantalla
 
 class Evento:
-    def __init__(self, nombre, jugador) -> None:
-        self.__nombre = nombre
-        self.__jugador:Jugador = jugador
+    def __init__(self, nombreEvento:str, entidadesParticipe:dict) -> None:
+        self.__nombreEvento = nombreEvento
+        self.__entidadesParticipe = entidadesParticipe
+        self.__comandos = []
     
     @property
     def nombre(self):
-        return self.__nombre
+        return self.__nombreEvento
     
     @property
-    def jugador(self):
-        return self.__jugador
+    def entidadesParticipe(self):
+        return self.__entidadesParticipe
+    
+    @property
+    def comandos(self):
+        return self.__comandos
+    
+    @comandos.setter
+    def comandos(self, value:list):
+        if not (type(value) is list): raise ValueError("El valor no es del tipo 'list'")
+        self.__comandos = value
+
+class Pelea(Evento):
+    def __init__(self, nombreEvento: str, entidadesParticipe: dict) -> None:
+        super().__init__(nombreEvento, entidadesParticipe)
+        super().comandos += 
+    
+    
+
+class Evento:
+    def __init__(self, nombreEvento, entidadesParticipe) -> None:
+        self.__nombreEvento = nombreEvento
+        self.__entidadesParticipe = entidadesParticipe
+        self.__comandos = []
+    
+    @property
+    def nombre(self):
+        return self.__nombreEvento
     
     def danar(self, dano):
         self.__jugador.aplicarDano(dano)
@@ -54,4 +81,8 @@ class Pelea(Evento):
                 if not estaVivo:
                     pantalla.notificacion(f"El jugador {self.jugador.nombre} esta muerto")
                     break
+
+class Aventura(Evento):
+    def __init__(self, nombre, jugador) -> None:
+        super().__init__(nombre, jugador)
             
